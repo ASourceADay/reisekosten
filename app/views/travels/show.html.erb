@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+<h1>
+  Travel cost details for
+  <%= @travel.travel_label %>
+</h1>
+<p>
+  <strong>Start time:</strong>
+  <%= @travel.start_time %>
+</p>
+<p>
+  <strong>End time:</strong>
+  <%= @travel.end_time %>
+</p>
+<p>
+  <strong>Hours between:</strong>
+<%= @hours_between %>
+</p>
+<p>
+  <strong>Total km:</strong>
+<%= @total_km %>
+</p>
+<p>
+  <strong>Km price:</strong>
+<%= @km_pricing %>
+</p>
+<p>
+  <strong>Total km cost:</strong>
+<%= @total_km_cost %>
+</p>
+<p>
+  <strong>Fixed rate expenses:</strong>
+<%= @total_provision_expenses %>
+</p>
+<ul><li><p>
+<strong>Expenses for 24h trip:</strong>
+<%= @expenses_24h_away %>
+</p></li>
+<p><li>
+  <strong>Expenses for arrival/departure overnighter:</strong>
+<%= @expenses_arrival_departure_overnighter %>
+</p></li>
+<p><li>
+  <strong>Expenses for 8h trip without overnighter:</strong>
+<%= @expenses_8h_away_without_overnighter %>
+</p></li></ul>
+<p>
+  <strong>Total cost:</strong>
+<%= @total_cost %>
+</p>
+<%= render template: "/drives/index", :locals => { :@drives => Drive.select{ |item| item[:travel_id] ==  @travel.id } } %>
+
+<%= render  template: "/drives/new" , :locals => { :@drive => Drive.new, :@travel_id => @travel.id } %>
+
+<%= link_to 'Edit', edit_travel_path(@travel) %> |
+<%= link_to 'Back', travels_path %>

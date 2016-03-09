@@ -1,0 +1,10 @@
+<h1>Editing travel</h1>
+
+<%= render 'travels/form' %>
+
+<%= render template: "/drives/index", :locals => { :@drives => Drive.select{ |item| item[:travel_id] == @travel.id } } %>
+
+<%= render  template: "/drives/new" , :locals => { :@drive => Drive.new} %>
+
+<%= link_to 'Show', @travel %> |
+<%= link_to 'Back', travels_path %>
