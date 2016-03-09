@@ -11,7 +11,7 @@ class Travel < ActiveRecord::Base
   end
   
   def calculate_total_cost
-     calculate_all_drives_km_price + calculate_employee_overnighter_away_from_home
+     calculate_all_drives_km_price.to_f + calculate_employee_overnighter_away_from_home.to_i
   end
  
   def get_hours_between
@@ -27,7 +27,7 @@ class Travel < ActiveRecord::Base
   end
   
   def add_provision_expenses(amount, times)
-    amount * times
+    amount.to_i * times.to_i
   end
   
   def days_between(end_date, start_date)
@@ -57,7 +57,7 @@ class Travel < ActiveRecord::Base
   end 
   
   def calculate_all_drives_km_price
-    get_km_price * calculate_total_km
+    get_km_price.to_f * calculate_total_km.to_f
   end 
       
   def employee_is_more_than_8h_away?
